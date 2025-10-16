@@ -18,19 +18,16 @@ class Ball:
         self.x += self.velocity_x
         self.y += self.velocity_y
 
+        # Wall collision (top/bottom)
         if self.y <= 0 or self.y + self.height >= self.screen_height:
             self.velocity_y *= -1
 
-def check_collision(self, paddles):
-    ball_rect = pygame.Rect(self.x - self.radius, self.y - self.radius, self.radius * 2, self.radius * 2)
-    for paddle in paddles:
-        if ball_rect.colliderect(paddle):
-            self.vel_x *= -1
-            # Ensure it doesn’t “stick”
-            if self.vel_x > 0:
-                self.x = paddle.right + self.radius
-            else:
-                self.x = paddle.left - self.radius
+    def check_collision(self, player, ai):
+        # Paddle collision only
+        if self.rect().colliderect(player.rect()):
+            self.velocity_x = -self.velocity_x
+        if self.rect().colliderect(ai.rect()):
+            self.velocity_x = -self.velocity_x
 
     def reset(self):
         self.x = self.original_x

@@ -33,8 +33,9 @@ def main():
             engine.update()
             engine.render(SCREEN)
         else:
+            SCREEN.fill(BLACK)  # Clear the screen before showing game over
             winner = "Player Wins!" if engine.player_score == engine.target_score else "AI Wins!"
-            engine.show_game_over(winner)
+            engine.show_game_over(winner, SCREEN)
             pygame.display.flip()
             pygame.time.delay(1500)
             engine.replay_menu(SCREEN)
