@@ -60,7 +60,7 @@ class GameEngine:
         pygame.draw.rect(screen, WHITE, self.player.rect())
         pygame.draw.rect(screen, WHITE, self.ai.rect())
         pygame.draw.ellipse(screen, WHITE, self.ball.rect())
-        # pygame.draw.aaline(screen, WHITE, (self.width//2, 0), (self.width//2, self.height))  # Remove or comment this line
+        pygame.draw.aaline(screen, WHITE, (self.width//2, 0), (self.width//2, self.height))  # Remove or comment this line
 
         # Draw score
         player_text = self.font.render(str(self.player_score), True, WHITE)
